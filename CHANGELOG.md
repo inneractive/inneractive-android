@@ -1,7 +1,7 @@
 ## Version 5.0.1 (June 30, 2014)
 - Release date: June 30th, 2014.
 - upgraded infrastructure with new API. For detailed information: https://inneractive.jira.com/wiki/display/DevWiki/Android+SDK+guidelines
-- Millennial Media SDK is bundled in.
+- Millennial Media SDK is bundled in (Millenial Media SDK v5.2.0)
 - Advertising ID (Google Play Services) was added along with Limited Ad Tracking.
 - New events were added to the listeners.
 - loading ad timeout control was added.
