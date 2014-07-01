@@ -1,0 +1,32 @@
+* -=====================================================================-
+ *   Inneractive Android SDK 
+ * -=====================================================================-
+ *   Update Date: June 30th, 2014.
+ *   Further documentation found here:  
+ *   https://inneractive.jira.com/wiki/display/DevWiki/Android+SDK+guidelines
+ * 
+-=====================================================================-
+-Version 5.0.1
+-========================================================================-
+- Release date:
+- upgraded infrastructure with new API. For detailed information: https://inneractive.jira.com/wiki/display/DevWiki/Android+SDK+guidelines
+- Millennial Media SDK is bundled in.
+- Advertising ID (Google Play Services) was added along with Limited Ad Tracking.
+- New events were added to the listeners.
+- loading ad timeout control was added.
+- VAST improvements were implemented.
+- Enhanced mediation support.
+- Additional targeting parameters were added for lucrative campaigns.
+- Loading ad timeout control was added.
+- Log level is enabled for detailed logs.
+- Enhanced mediation support.
+- Additional targeting parameters were added for lucrative campaigns.
+- Loading ad timeout control was added.
+- Log level is enabled for detailed logs.
+
+
+  
+
+
+
+

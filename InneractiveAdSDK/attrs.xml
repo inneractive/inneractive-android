@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="com.inneractive.api.ads.sdk.InneractiveAdView">
+        <attr name="appId" format="string" />
+        
+		<attr name="adType">
+			<enum name="BANNER" value="0" />
+			<enum name="RECTANGLE" value="1" />
+		</attr>
+		
+		<attr name="mediationName">
+			<enum name="MOPUB" value="0" />
+			<enum name="ADMOB" value="1" />
+			<enum name = "OTHER" value="2" />
+		</attr>
+		
+		<attr name="gender">
+		    <enum name="MALE" value="0" />
+			<enum name="FEMALE" value="1" />
+		</attr>
+		
+        <attr name="refreshInterval" format="integer" />
+        
+		<attr name="age" format="integer" />	
+		
+		<attr name="keywords" format="string" />
+		
+		<attr name="zipCode" format="string" />
+		
+	</declare-styleable>
+
+</resources>

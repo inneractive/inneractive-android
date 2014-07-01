@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Inneractive Sample App</string>
+	<string name="action_settings">Settings</string>
+	<string name="hello_world">Hello world!</string>
+	<string name="banner_appID_edit_message">App ID for Banner Ad goes here</string>
+	<string name="interstitial_appID_edit_message">App ID for Interstitial goes here</string>
+	<string name="banner_portal">Portal for Banner Ad goes here</string>
+	<string name="interstitial_portal">Portal for Interstitial goes here</string>
+	<string name="banner_serverhost">production</string>
+	<string name="interstitial_serverhost">production</string>
+
+</resources>

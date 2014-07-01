@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TabHost
+        android:id="@+id/tabhost"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="70dp" >
+
+            <LinearLayout
+                android:id="@+id/tab1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                
+				<EditText 
+                    android:id="@+id/bannerAppId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" 
+                    android:hint="@string/banner_appID_edit_message"/>
+                <RadioGroup
+                    android:id="@+id/radio_load_ad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <RadioButton
+                        android:id="@+id/radio_load_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:width="70dp"        
+      					android:height="70dp"
+                        android:onClick="onRadioAdClicked"
+                        android:text="Load Banner Ad" />
+
+                    <RadioButton
+                        android:id="@+id/radio_load_rectangle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:width="70dp"        
+      					android:height="70dp"
+                        android:onClick="onRadioAdClicked"
+                        android:text="Load Rectangle Ad" />
+                </RadioGroup>
+
+				<ScrollView 
+                    android:layout_width="match_parent"
+    				android:layout_height="match_parent">
+                    
+					<LinearLayout
+		                android:id="@+id/ad_layout"
+		                android:layout_width="fill_parent"
+		                android:layout_height="wrap_content"
+		                android:orientation="vertical" />
+		                
+	       		</ScrollView>  
+	       		     		
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tab2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+				
+                <RadioGroup
+                    android:id="@+id/radio_load_xml_ad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <RadioButton
+                        android:id="@+id/radio_load_xml_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:width="70dp"        
+      					android:height="70dp"
+                        android:onClick="onRadioXmlBannerClicked"
+                        android:text="Load Banner Ad" />
+
+                    <RadioButton
+                        android:id="@+id/radio_load_xml_rectangle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:width="70dp"        
+      					android:height="70dp"
+                        android:onClick="onRadioXmlRectClicked"
+                        android:text="Load Rectangle Ad" />
+                </RadioGroup>
+
+				<ScrollView 
+                    android:layout_width="match_parent"
+    				android:layout_height="match_parent">
+                    
+					<LinearLayout
+		                android:id="@+id/xml_ad_layout"
+		                android:layout_width="fill_parent"
+		                android:layout_height="wrap_content"
+		                android:orientation="vertical" >
+		                
+		                <com.inneractive.api.ads.sdk.InneractiveAdView
+						    android:id="@+id/banner_ad"
+						    xmlns:inneractive="http://schemas.android.com/apk/res/com.inneractive.api.ads.sample"
+						    android:layout_width="match_parent"
+						    android:layout_height="match_parent"
+						    inneractive:appId="MyCompany_MyApp"
+						    inneractive:adType="BANNER"
+						    inneractive:refreshInterval="60"
+						    inneractive:age="27"
+						    inneractive:gender="FEMALE"
+							inneractive:zipCode="94404"
+						    inneractive:keywords="entertainment,movies" />
+		                
+		                <com.inneractive.api.ads.sdk.InneractiveAdView
+						    android:id="@+id/rectangle_ad"
+						    xmlns:inneractive="http://schemas.android.com/apk/res/com.inneractive.api.ads.sample"
+						    android:layout_width="match_parent"
+						    android:layout_height="match_parent"
+						    inneractive:appId="MyCompany_MyApp"
+						    inneractive:adType="RECTANGLE"
+						    inneractive:refreshInterval="80"
+						    inneractive:age="34"
+						    inneractive:gender="MALE"
+							inneractive:zipCode="94404"
+						    inneractive:keywords="music" />
+		                
+					</LinearLayout>
+		                
+	       		</ScrollView>  
+	       		     		
+            </LinearLayout>
+            
+            <LinearLayout
+                android:id="@+id/tab3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                 <EditText 
+                    android:id="@+id/interstitialAppId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" 
+                    android:hint="@string/interstitial_appID_edit_message" />
+                <Button
+                    android:id="@+id/load_interstitial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Load Interstitial" 
+                    android:onClick="onLoadInterstitialAdClicked" />
+
+                <Button
+                    android:id="@+id/show_interstitial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Show Interstitial" 
+                    android:onClick="onShowInterstitialAdClicked" />
+            </LinearLayout>
+        </FrameLayout>
+    </TabHost>
+
+</LinearLayout>
