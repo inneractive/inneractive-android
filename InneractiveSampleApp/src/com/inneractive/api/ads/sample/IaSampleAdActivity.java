@@ -249,6 +249,8 @@ public class IaSampleAdActivity extends Activity implements InneractiveBannerAdL
     	ad.setGender(Gender.FEMALE);
     	ad.setKeywords("pop,rock,music");
     	ad.setZipCode("94401");	
+        //the default is true anyway...
+    	ad.setAndroidIdEnabled(true);
 	}
 
     public boolean validateAppId(EditText appIdEditText) {

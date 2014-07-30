@@ -1,3 +1,12 @@
+## Version 5.0.2 (July 29, 2014)
+- Release date: July 29th, 2014
+- Added the option to disable Android ID and Device ID. The default is enabled.
+- Updated Millennial Media 5.3.0 support.
+- Updated Google Play Services 18.0 support.
+- Updated MoPub 2.3 support.
+- Rich Media improvements were added.
+- Ad Report feature was added for Debug level.
+
 ## Version 5.0.1 (June 30, 2014)
 - Release date: June 30th, 2014.
 - upgraded infrastructure with new API. For detailed information: https://inneractive.jira.com/wiki/display/DevWiki/Android+SDK+guidelines
