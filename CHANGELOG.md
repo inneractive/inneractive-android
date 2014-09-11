@@ -7,6 +7,7 @@
 - Rich Media improvements were added.
 - Ad Report feature was added for Debug level.
 
+
 ## Version 5.0.1 (June 30, 2014)
 - Release date: June 30th, 2014.
 - upgraded infrastructure with new API. For detailed information: https://inneractive.jira.com/wiki/display/DevWiki/Android+SDK+guidelines
