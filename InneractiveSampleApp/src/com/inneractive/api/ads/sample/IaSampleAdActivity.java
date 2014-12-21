@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.TabHost;
 import android.widget.Toast;
+
 import com.inneractive.api.ads.sdk.InneractiveAdView;
 import com.inneractive.api.ads.sdk.InneractiveAdView.AdType;
 import com.inneractive.api.ads.sdk.InneractiveAdView.Gender;
@@ -15,8 +17,6 @@ import com.inneractive.api.ads.sdk.InneractiveAdView.InneractiveBannerAdListener
 import com.inneractive.api.ads.sdk.InneractiveAdView.InneractiveErrorCode;
 import com.inneractive.api.ads.sdk.InneractiveInterstitialView;
 import com.inneractive.api.ads.sdk.InneractiveInterstitialView.InneractiveInterstitialAdListener;
-
-import android.widget.TabHost;
 
 public class IaSampleAdActivity extends Activity implements InneractiveBannerAdListener, InneractiveInterstitialAdListener{
 
@@ -87,27 +87,30 @@ public class IaSampleAdActivity extends Activity implements InneractiveBannerAdL
     		mToast.cancel();
     		mToast = null;
     	}
-    	if (mBanner != null) {
-    		mBanner.destroy();
-    		mBanner = null;
-    	}
-    	if (mInterstitial != null) {
-    		mInterstitial.destroy();
-    		mInterstitial = null;
-    	}
-    	if (mRect != null) {
-    		mRect.destroy();
-    		mRect = null;
-    	}
-    	if (mXmlBanner != null) {
-    		mXmlBanner.destroy();
-    		mXmlBanner = null;
-    	}
-    	if (mXmlRect != null) {
-    		mXmlRect.destroy();
-    		mXmlRect = null;
-    	}
+    	// Call inneractive::destroy only if this activity is actually finishing, and not during restart.
+        if (isFinishing()) {
+        	if (mBanner != null) {
+        		mBanner.destroy();
+        		mBanner = null;
+        	}
+        	if (mInterstitial != null) {
+        		mInterstitial.destroy();
+        		mInterstitial = null;
+        	}
+        	if (mRect != null) {
+        		mRect.destroy();
+        		mRect = null;
+        	}
+        	if (mXmlBanner != null) {
+        		mXmlBanner.destroy();
+        		mXmlBanner = null;
+        	}
+        	if (mXmlRect != null) {
+        		mXmlRect.destroy();
+        		mXmlRect = null;
+        	}
 
+        }
         super.onDestroy();
     }
     public void onRadioXmlBannerClicked(View view) {
@@ -249,8 +252,8 @@ public class IaSampleAdActivity extends Activity implements InneractiveBannerAdL
     	ad.setGender(Gender.FEMALE);
     	ad.setKeywords("pop,rock,music");
     	ad.setZipCode("94401");	
-        //the default is true anyway...
     	ad.setAndroidIdEnabled(true);
+    	ad.setDeviceIdEnabled(false);
 	}
 
     public boolean validateAppId(EditText appIdEditText) {

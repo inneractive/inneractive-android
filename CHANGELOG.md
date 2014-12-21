@@ -1,3 +1,12 @@
+## Version 5.0.4 (Dec 01, 2014)
+-========================================================================-
+- Release date: Dec 01, 2014
+- Bug Fixes.
+- Vast improvements:
+1. Fixed various stability and performance issues.
+2. Supports new media types and devices.
+3. Upgraded media player UI.
+
 ## Version 5.0.2 (July 29, 2014)
 - Release date: July 29th, 2014
 - Added the option to disable Android ID and Device ID. The default is enabled.
