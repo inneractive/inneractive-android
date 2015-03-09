@@ -34,7 +34,7 @@
         <activity android:name="com.inneractive.api.ads.sdk.InneractiveInternalBrowserActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity android:name="com.inneractive.api.ads.sdk.InneractiveInterstitialAdActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity android:name="com.inneractive.api.ads.sdk.InneractiveRichMediaVideoPlayerActivity" android:configChanges="keyboardHidden|orientation"/>
-        
+
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
         
     </application>

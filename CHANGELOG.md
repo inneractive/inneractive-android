@@ -1,5 +1,11 @@
-## Version 5.0.4 (Dec 01, 2014)
+## Version 5.0.4.1 (Mar 09, 2015)
 -========================================================================-
+- Release date: Mar 09, 2015
+- Bug Fixes.
+- Unity plugin support
+- Interstitial video enhancements
+
+## Version 5.0.4 (Dec 01, 2014)
 - Release date: Dec 01, 2014
 - Bug Fixes.
 - Vast improvements:

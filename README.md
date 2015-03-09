@@ -5,7 +5,7 @@ The InneractiveAdSDK provides a simple way to integrate inneractive ads into mob
 
 
 ## Integration
-Integration instructions are available on the Inneractive [Wiki](https://inneractive.jira.com/wiki/display/DevWiki/Android+SDK+guidelines).
+Integration instructions are available on the Inneractive [Wiki](https://confluence.inner-active.com/display/DevWiki/Android+SDK+guidelines).
 This document begins by first explaining how to integrate ads into your application using either XML or Java code.  It then goes on to show you how to harness inneractive's highly targeted ad system by providing additional information with your requests.  Finally, you'll see how to receive and act upon events such as the user clicking an ad. 
 But first, let's look at requesting an ad for display.
 
