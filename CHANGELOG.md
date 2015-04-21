@@ -1,3 +1,14 @@
+## Version 5.0.5 (Apr 21, 2015)
+-========================================================================-
+- Release date: Apr 21, 2015
+- Added Publisher configuration for video behaviour
+- New MoPub plugin Ð easier to integrate
+  - Added API for:
+      Is the Interstitial Video Ad
+      Video Completed
+  - Added new location parameters to the request: horizontal accuracy, time accuracy
+  - Bug fixes
+
 ## Version 5.0.4.1 (Mar 09, 2015)
 -========================================================================-
 - Release date: Mar 09, 2015

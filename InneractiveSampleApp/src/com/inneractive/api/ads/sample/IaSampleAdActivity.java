@@ -10,13 +10,16 @@ import android.widget.RadioButton;
 import android.widget.TabHost;
 import android.widget.Toast;
 
+import com.inneractive.api.ads.sdk.InneractiveAdManager;
 import com.inneractive.api.ads.sdk.InneractiveAdView;
 import com.inneractive.api.ads.sdk.InneractiveAdView.AdType;
-import com.inneractive.api.ads.sdk.InneractiveAdView.Gender;
 import com.inneractive.api.ads.sdk.InneractiveAdView.InneractiveBannerAdListener;
-import com.inneractive.api.ads.sdk.InneractiveAdView.InneractiveErrorCode;
+import com.inneractive.api.ads.sdk.InneractiveErrorCode;
+import com.inneractive.api.ads.sdk.InneractiveGlobalConfig;
 import com.inneractive.api.ads.sdk.InneractiveInterstitialView;
 import com.inneractive.api.ads.sdk.InneractiveInterstitialView.InneractiveInterstitialAdListener;
+import com.inneractive.api.ads.sdk.InneractiveUserConfig;
+import com.inneractive.api.ads.sdk.InneractiveUserConfig.Gender;
 
 public class IaSampleAdActivity extends Activity implements InneractiveBannerAdListener, InneractiveInterstitialAdListener{
 
@@ -43,9 +46,17 @@ public class IaSampleAdActivity extends Activity implements InneractiveBannerAdL
     public void onCreate(Bundle savedInstanceState) 
     { 
     	super.onCreate(savedInstanceState); 
-    	setContentView(R.layout.tab_layout);
+    	
+    	// Initialize the inneractive library before starting requesting ads
+    	InneractiveAdManager.initialize(this);
+    	
+    	setContentView(getContentViewResId());
     	    	
     	initialize();
+    }
+    
+    protected int getContentViewResId() {
+    	return R.layout.tab_layout;
     }
 
     void initialize(){
@@ -72,7 +83,7 @@ public class IaSampleAdActivity extends Activity implements InneractiveBannerAdL
     	layout = (LinearLayout) findViewById(R.id.ad_layout);
     	
     	bannerAppIdText = (EditText) findViewById(R.id.bannerAppId);
-    	interstitialAppIdText = (EditText)findViewById(R.id.interstitialAppId);   	
+    	interstitialAppIdText = (EditText)findViewById(R.id.interstitialAppId);  
     }
     
     
@@ -110,6 +121,7 @@ public class IaSampleAdActivity extends Activity implements InneractiveBannerAdL
         		mXmlRect = null;
         	}
 
+        	InneractiveAdManager.destroy();
         }
         super.onDestroy();
     }
@@ -161,22 +173,7 @@ public class IaSampleAdActivity extends Activity implements InneractiveBannerAdL
             case R.id.radio_load_banner:
                 if (checked){
                 	// initialize banner
-                	mBanner = new InneractiveAdView(this, appId, AdType.Banner);
-                	
-                	// setters
-                	mBanner.setBannerAdListener(this);
-                	mBanner.setRefreshInterval(30);
-                	initializeOptionalParameters(mBanner);
-
-                	
-                	// get the SDK version 
-                	sdkVersion = mBanner.getSDKversion();
-                	
-                	// load ad
-                	mBanner.loadAd();
-                	
-                	// add the ad to the app layout
-                	layout.addView(mBanner);
+                	initializeBanner();
                 }
                 break;
                 
@@ -207,7 +204,27 @@ public class IaSampleAdActivity extends Activity implements InneractiveBannerAdL
     }
     
     
-    public void onLoadInterstitialAdClicked(View view){
+    protected void initializeBanner() {
+    	Log.d("test", "initialize banner called");
+    	mBanner = new InneractiveAdView(this, appId, AdType.Banner);
+    	
+    	// setters
+    	mBanner.setBannerAdListener(this);
+    	mBanner.setRefreshInterval(30);
+    	initializeOptionalParameters(mBanner);
+
+    	
+    	// get the SDK version 
+    	sdkVersion = mBanner.getSDKversion();
+    	
+    	// load ad
+    	mBanner.loadAd();
+    	
+    	// add the ad to the app layout
+    	layout.addView(mBanner);
+	}
+
+	public void onLoadInterstitialAdClicked(View view){
     	
     	// validate the app id value (use default value if needed)
     	if(!validateAppId(interstitialAppIdText)){
@@ -247,13 +264,12 @@ public class IaSampleAdActivity extends Activity implements InneractiveBannerAdL
     }
     
     public void initializeOptionalParameters(InneractiveAdView ad) {
-
-    	ad.setAge(35);
-    	ad.setGender(Gender.FEMALE);
+    	ad.setUserParams( new InneractiveUserConfig()
+		.setGender(Gender.FEMALE)
+		.setZipCode("94401")
+		.setAge(35));
+    	
     	ad.setKeywords("pop,rock,music");
-    	ad.setZipCode("94401");	
-    	ad.setAndroidIdEnabled(true);
-    	ad.setDeviceIdEnabled(false);
 	}
 
     public boolean validateAppId(EditText appIdEditText) {
@@ -324,7 +340,13 @@ public class IaSampleAdActivity extends Activity implements InneractiveBannerAdL
 	@Override
 	public void inneractiveInterstitialLoaded(InneractiveInterstitialView interstitial) {
         Log.d(INNERACTIVE_LOG_TAG, "*** inneractiveInterstitialLoaded ***" + interstitial);
-        eventToast("Inneractive - inneractiveInterstitialLoaded" , Toast.LENGTH_SHORT);
+        
+        
+        if (interstitial.isVideoAd()) {
+        	eventToast("Inneractive - inneractiveInterstitialLoaded - video" , Toast.LENGTH_SHORT);
+        } else {
+        	eventToast("Inneractive - inneractiveInterstitialLoaded - static" , Toast.LENGTH_SHORT);
+        }
 		
 	}
 	
@@ -373,5 +395,10 @@ public class IaSampleAdActivity extends Activity implements InneractiveBannerAdL
 	public void inneractiveInternalBrowserDismissed(InneractiveAdView banner) {
 		Log.d(INNERACTIVE_LOG_TAG, "*** inneractiveInternalBrowserDismissed ***");		
 		eventToast("Inneractive - inneractiveInternalBrowserDismissed",Toast.LENGTH_SHORT);
+	}
+
+	public void inneractiveInterstitialVideoCompleted(InneractiveInterstitialView interstitial) {
+		Log.d(INNERACTIVE_LOG_TAG, "*** inneractiveInterstitialVideoCompleted ***");
+		eventToast("Inneractive - interstitial video completed" ,Toast.LENGTH_SHORT);
 	}
 }
